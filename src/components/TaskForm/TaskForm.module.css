@@ -1,0 +1,34 @@
+.addForm {
+  margin-bottom: 40px;
+}
+
+.formControl {
+  margin: 20px 0;
+}
+
+.formControl label {
+  display: block;
+}
+
+.formControl input {
+  width: 100%;
+  height: 40px;
+  margin: 5px;
+  padding: 3px 7px;
+  font-size: 17px;
+}
+
+.formControlCheck {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.formControlCheck label {
+  flex: 1;
+}
+
+.formControlCheck input {
+  flex: 2;
+  height: 20px;
+}
