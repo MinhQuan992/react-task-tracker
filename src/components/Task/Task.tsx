@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { FaTimes } from "react-icons/fa";
 import { TaskObject } from "../../App";
 import styles from "./Task.module.css";
@@ -21,6 +22,7 @@ const Task: React.FC<TaskProps> = ({ task, onDelete, onToggle }) => {
           />
         </h3>
         <p dangerouslySetInnerHTML={{ __html: task.day }}></p>
+        <p><Link to={`/tasks/${task.id}`}>View Details</Link></p>
       </div>
     </div>
   );
