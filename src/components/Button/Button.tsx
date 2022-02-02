@@ -11,7 +11,11 @@ const Button: React.FC<ButtonProps> = ({ text, type, callback }) => {
   return (
     <button
       className={`${styles.btn} ${
-        type === "btnAdd" ? styles.btnAdd : styles.btnClose
+        type === "btnAdd"
+          ? styles.btnAdd
+          : type === "btnClose"
+          ? styles.btnClose
+          : styles.btnGoBack
       }`}
       onClick={callback}
     >
