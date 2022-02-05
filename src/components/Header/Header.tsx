@@ -2,11 +2,11 @@ import React from "react";
 import Button from "../Button/Button";
 import styles from "./Header.module.css";
 
-type HeaderProps = {
+interface HeaderProps {
   title?: string;
   showForm: boolean;
   callback(): void;
-};
+}
 
 const Header: React.FC<HeaderProps> = ({
   title = "Default Title",

@@ -1,11 +1,11 @@
 import React from "react";
 import styles from "./Button.module.css";
 
-type ButtonProps = {
+interface ButtonProps {
   text: string;
   type: string;
   callback(): void;
-};
+}
 
 const Button: React.FC<ButtonProps> = ({ text, type, callback }) => {
   return (

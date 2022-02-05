@@ -3,9 +3,9 @@ import formStyles from "./TaskForm.module.css";
 import buttonStyles from "../Button/Button.module.css";
 import { TaskObject } from "../../App";
 
-type TaskFormProps = {
+interface TaskFormProps {
   onAdd(task: TaskObject): void;
-};
+}
 
 const TaskForm: React.FC<TaskFormProps> = ({ onAdd }) => {
   const [text, setText] = useState("");

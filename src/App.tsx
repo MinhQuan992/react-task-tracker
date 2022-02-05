@@ -1,19 +1,21 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import About from "./components/About/About";
 import TaskList from "./components/TaskList/TaskList";
 import TaskDetails from "./components/TaskDetails/TaskDetails";
 import TaskForm from "./components/TaskForm/TaskForm";
+
 import globalStyles from "./App.module.css";
 
-export type TaskObject = {
+export interface TaskObject {
   id: number;
   text: string;
   day: string;
   reminder: boolean;
-};
+}
 
 const App = () => {
   const [tasks, setTasks] = useState<TaskObject[]>([]);
