@@ -1,13 +1,16 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { changeState } from "../../features/taskFormSlice";
 import styles from "./Button.module.css";
 
-type ButtonProps = {
+interface ButtonProps {
   text: string;
   type: string;
-  callback(): void;
-};
+}
 
-const Button: React.FC<ButtonProps> = ({ text, type, callback }) => {
+const Button: React.FC<ButtonProps> = ({ text, type }) => {
+  const dispatch = useDispatch();
+
   return (
     <button
       className={`${styles.btn} ${
@@ -17,7 +20,7 @@ const Button: React.FC<ButtonProps> = ({ text, type, callback }) => {
           ? styles.btnClose
           : styles.btnGoBack
       }`}
-      onClick={callback}
+      onClick={() => dispatch(changeState())}
     >
       {text}
     </button>

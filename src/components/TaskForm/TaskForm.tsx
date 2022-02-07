@@ -1,25 +1,25 @@
 import React, { useState } from "react";
 import formStyles from "./TaskForm.module.css";
 import buttonStyles from "../Button/Button.module.css";
-import { TaskObject } from "../../App";
+import { useDispatch } from "react-redux";
+import { addNewTask } from "../../features/taskListSlice";
 
-type TaskFormProps = {
-  onAdd(task: TaskObject): void;
-};
-
-const TaskForm: React.FC<TaskFormProps> = ({ onAdd }) => {
+const TaskForm: React.FC = () => {
   const [text, setText] = useState("");
   const [day, setDay] = useState("");
   const [reminder, setReminder] = useState(false);
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const dispatch = useDispatch();
+
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!text) {
       alert("Please add a task");
+      return;
     }
 
     const id: number = Math.floor(Math.random() * 100 + 1);
-    onAdd({ id, text, day, reminder });
+    dispatch(addNewTask({ id, text, day, reminder }));
 
     setText("");
     setDay("");
