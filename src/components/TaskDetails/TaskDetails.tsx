@@ -1,5 +1,4 @@
 import React from "react";
-import Button from "../Button/Button";
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { TaskObject } from "../../App";
@@ -33,13 +32,7 @@ const TaskDetails: React.FC = () => {
     <div>
       <h3>{task?.text}</h3>
       <p>{task?.day}</p>
-      <Button
-        text="Go Back"
-        type="btnGoBack"
-        callback={() => {
-          navigate(-1);
-        }}
-      />
+      <a href="/">Go Back</a>
     </div>
   );
 };
