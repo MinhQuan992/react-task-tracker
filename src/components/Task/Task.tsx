@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   deleteOneTask,
   selectTaskById,
-  updateOneTask,
+  changeTaskReminder,
 } from "../../features/taskListSlice";
 import { RootState } from "../../app/store";
 
@@ -20,37 +20,36 @@ const Task: React.FC<TaskProps> = ({ task }) => {
   const selectedTask = useSelector((state: RootState) =>
     selectTaskById(state, task.id)
   );
+
   const dispatch = useDispatch();
+  
+  if (typeof selectedTask === "undefined") {
+    return null;
+  }  
 
   return (
     <div
       className={`${styles.task} ${
-        selectedTask?.reminder ? styles.reminder : null
+        selectedTask.reminder ? styles.reminder : null
       }`}
     >
       <div
         onDoubleClick={async () => {
-          if (typeof selectedTask !== "undefined") {
-            dispatch(updateOneTask(selectedTask.id));
-          }
+          dispatch(changeTaskReminder(selectedTask.id));
         }}
       >
         <h3>
-          {selectedTask?.text}{" "}
+          {selectedTask.text}{" "}
           <FaTimes
             style={{ color: "red", cursor: "pointer" }}
             onClick={async () => {
-              if (typeof selectedTask !== "undefined") {
-                dispatch(deleteOneTask(selectedTask.id));
-              }
+              dispatch(deleteOneTask(selectedTask.id));
             }}
           />
         </h3>
-        <p>{selectedTask?.day}</p>
+        <p>{selectedTask.day}</p>
         <p>
-          {typeof selectedTask !== "undefined" ? (
-            <Link to={`/tasks/${selectedTask?.id}`}>View Details</Link>
-          ) : null}
+          <Link to={`/tasks/${selectedTask.id}`}>View Details</Link>
         </p>
       </div>
     </div>

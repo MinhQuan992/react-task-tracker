@@ -40,8 +40,8 @@ export const addNewTask = createAsyncThunk(
   }
 );
 
-export const updateOneTask = createAsyncThunk(
-  "taskList/updateOneTask",
+export const changeTaskReminder = createAsyncThunk(
+  "taskList/changeTaskReminder",
   async (id: number) => {
     const taskToUpdate = await fetchOneTask(id);
     const updatedTask = { ...taskToUpdate, reminder: !taskToUpdate.reminder };
@@ -73,7 +73,7 @@ export const taskListSlice = createSlice({
         taskAdapter.addOne(state, action.payload);
         state.loading = false;
       })
-      .addCase(updateOneTask.fulfilled, (state, action) => {
+      .addCase(changeTaskReminder.fulfilled, (state, action) => {
         const newTask = action.payload;
         state.entities[newTask.id] = newTask;
         state.loading = false;
